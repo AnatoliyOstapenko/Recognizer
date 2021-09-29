@@ -7,13 +7,16 @@
 
 import UIKit
 
-// add CoreML and Vision
+// 1 add CoreML and Vision
 import CoreML
 import Vision
 
 
-// add UIImagePickerControllerDelegate and UINavigationControllerDelegate
+// 2 add UIImagePickerControllerDelegate and UINavigationControllerDelegate
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // 3 initialize manager the system interfaces
+    let imagePicker = UIImagePickerController()
     
     
     @IBOutlet weak var cameraImageView: UIImageView!
@@ -22,7 +25,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        // 4 activate delegate of UIImagePickerControllerDelegate
+        imagePicker.delegate = self
     }
 
     @IBAction func cameraTapped(_ sender: UIBarButtonItem) {

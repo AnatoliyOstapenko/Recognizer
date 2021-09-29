@@ -14,6 +14,7 @@
 		FAEE174A2704EE6000A0DF62 /* Recognizer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAEE17482704EE6000A0DF62 /* Recognizer.xcdatamodeld */; };
 		FAEE174C2704EE6500A0DF62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAEE174B2704EE6500A0DF62 /* Assets.xcassets */; };
 		FAEE174F2704EE6500A0DF62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEE174D2704EE6500A0DF62 /* LaunchScreen.storyboard */; };
+		FAEE17582704EF4500A0DF62 /* Inceptionv3.mlkitmodel in Sources */ = {isa = PBXBuildFile; fileRef = FAEE17572704EF4500A0DF62 /* Inceptionv3.mlkitmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FAEE174B2704EE6500A0DF62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAEE174E2704EE6500A0DF62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAEE17502704EE6500A0DF62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAEE17572704EF4500A0DF62 /* Inceptionv3.mlkitmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlkitmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				FAEE17452704EE6000A0DF62 /* Main.storyboard */,
 				FAEE174B2704EE6500A0DF62 /* Assets.xcassets */,
 				FAEE174D2704EE6500A0DF62 /* LaunchScreen.storyboard */,
+				FAEE17572704EF4500A0DF62 /* Inceptionv3.mlkitmodel */,
 				FAEE17502704EE6500A0DF62 /* Info.plist */,
 				FAEE17482704EE6000A0DF62 /* Recognizer.xcdatamodeld */,
 			);
@@ -144,6 +147,7 @@
 				FAEE17402704EE6000A0DF62 /* AppDelegate.swift in Sources */,
 				FAEE17422704EE6000A0DF62 /* SceneDelegate.swift in Sources */,
 				FAEE174A2704EE6000A0DF62 /* Recognizer.xcdatamodeld in Sources */,
+				FAEE17582704EF4500A0DF62 /* Inceptionv3.mlkitmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

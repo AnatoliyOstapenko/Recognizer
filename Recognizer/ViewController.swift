@@ -38,13 +38,41 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // 8 Tells the delegate that the user picked a still image or movie.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        // 9 unwrap uncropped image selected by the use
+        // 9 choose image
         guard let userPickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
         // 10 to show an image on the screen
         cameraImageView.image = userPickedImage
         
+        // convert image to CIImage
+        guard let ciImage = CIImage(image: userPickedImage) else { fatalError("Converting UIImage to CIIMage failed")}
+        
         imagePicker.dismiss(animated: true, completion: nil)
+        
+    }
+    //
+    func detect(image: CIImage) {
+        
+        // initialize container for a Core ML model used with Vision framework requests
+        guard let model = try? VNCoreMLModel(for: Inceptionv3().model) else { fatalError("Loading CoreML model failed") }
+        
+        let request = VNCoreMLRequest(model: model) { (request, error) in
+            
+            //Process model image unwrapping
+            guard let results = request.results as? [VNClassificationObservation] else { fatalError("Process model image failed") }
+            
+            print(results)
+        }
+        
+        //create handler to specify image
+        let handler = VNImageRequestHandler(ciImage: image)
+        // Vision requests to be performed
+        do {
+            try handler.perform([request])
+        } catch { print(error)}
+        
+        
+        
         
     }
 

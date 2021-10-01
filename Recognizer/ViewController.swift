@@ -22,6 +22,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var cameraImageView: UIImageView!
     
+    @IBOutlet weak var topLabel: UILabel!
     
 
     override func viewDidLoad() {
@@ -35,7 +36,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.allowsEditing = false
     }
     
-    // 8 Tells the delegate that the user picked a still image or movie.
+    // 8 default UIImagePickerControllerDelegate func when user picked a still image or movie.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         // 9 choose image
@@ -51,22 +52,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         detect(image: ciImage)
         
         
-        //Dismisses the view controller
+        // dismiss the view controller, mandatory
         imagePicker.dismiss(animated: true, completion: nil)
         
     }
-    //
+    // identifier method
     func detect(image: CIImage) {
         
-        // initialize container for a Core ML model used with Vision framework requests
+        // load Core ML model used with Vision framework requests
         guard let model = try? VNCoreMLModel(for: Inceptionv3(configuration: MLModelConfiguration()).model) else { fatalError("Loading CoreML model failed") }
         
         let request = VNCoreMLRequest(model: model) { (request, error) in
             
-            //Process model image unwrapping
+            // get results
             guard let results = request.results as? [VNClassificationObservation] else { fatalError("Process model image failed") }
+            // unwrap first most relevant result
+            guard let first = results.first?.identifier, let confidence = results.first?.confidence else { return }
             
-            print(results)
+            let persentage = Double(confidence) * 100
+            
+            self.navigationItem.title = first
+            
+            self.topLabel.text = ("\(first), confidence is \(String(format: "%.0f", persentage))%")
         }
         
         //create handler to specify image
@@ -88,7 +95,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(imagePicker, animated: true, completion: nil)
         
     }
-    
+        
     
 }
 

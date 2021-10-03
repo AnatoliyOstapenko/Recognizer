@@ -73,7 +73,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             self.navigationItem.title = first
             
-            self.topLabel.text = ("\(first), confidence is \(String(format: "%.0f", persentage))%")
+            self.topLabel.text = "\(first), confidence is \(String(format: "%.0f", persentage))%"
         }
         
         //create handler to specify image
